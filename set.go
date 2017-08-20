@@ -16,3 +16,15 @@ func (s Set) Del(n int) bool {
     delete(s, n)
     return r
 }
+
+func (s1 Set) And(s2 Set) Set {
+    return Set{}
+}
+
+func (s1 Set) Or(s2 Set) Set {
+    return Set{}
+}
+
+func (s1 Set) Not(s2 Set) Set {
+    return Set{}
+}
