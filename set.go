@@ -12,19 +12,19 @@ func (s Set) Add(n int) {
 }
 
 func (s Set) Del(n int) bool {
-    r := s.In(n)
-    delete(s, n)
-    return r
+	r := s.In(n)
+	delete(s, n)
+	return r
 }
 
 func (s1 Set) And(s2 Set) Set {
-    return Set{}
+	return Set{}
 }
 
 func (s1 Set) Or(s2 Set) Set {
-    return Set{}
+	return Set{}
 }
 
 func (s1 Set) Not(s2 Set) Set {
-    return Set{}
+	return Set{}
 }

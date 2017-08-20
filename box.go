@@ -19,7 +19,6 @@ func (b *StringBox) empty() bool {
 	return false
 }
 
-
 func (b *StringBox) To(s string) int {
 	b.init()
 	_, ok := b.to[s]
@@ -37,4 +36,3 @@ func (b *StringBox) From(n int) (string, bool) {
 	s, ok := b.from[n]
 	return s, ok
 }
-
