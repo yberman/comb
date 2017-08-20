@@ -33,4 +33,5 @@ func (b *Blah) FuncFoo(argBuzz Buzz) {
 ### Pointer Receivers
 
 Be consistent with wether the receivers are
-pointer receivers or not.
+pointer receivers or not. If the object is
+a struct, use pointer receivers.
