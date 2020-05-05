@@ -4,14 +4,6 @@ import (
 	"testing"
 )
 
-func makeSliceOfSlice(ch chan []int) [][]int {
-	r := make([][]int, 0)
-	for s := range ch {
-		r = append(r, s)
-	}
-	return r
-}
-
 func equalSlice(s1, s2 []int) bool {
 	if len(s1) != len(s2) {
 		return false
@@ -76,7 +68,7 @@ func TestBinomial(t *testing.T) {
 }
 
 func TestCominations(t *testing.T) {
-	if equalSliceOfSlice(makeSliceOfSlice(Combinations(4, 2)), [][]int{{0, 1}, {0, 2}, {0, 3}, {1, 2}, {1, 3}, {1, 4}}) {
+	if equalSliceOfSlice(ToSliceOfSlice(Combinations(4, 2)), [][]int{{0, 1}, {0, 2}, {0, 3}, {1, 2}, {1, 3}, {1, 4}}) {
 		t.Errorf("Combinations(4, 2) has error\n")
 	}
 }
