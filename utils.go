@@ -8,3 +8,10 @@ func ToSliceOfSlice(ch chan []int) [][]int {
 	}
 	return r
 }
+
+// CopySlice copies and integer slice
+func CopySlice(s []int) (sCopy []int) {
+	sCopy = make([]int, len(s))
+	copy(sCopy, s)
+	return
+}

@@ -12,8 +12,8 @@ func TestFactorial(t *testing.T) {
 	}
 }
 
-// func TestPermutations(t *testing.T) {
-// 	if equalSliceOfSlice(makeSliceOfSlice(Permutations(3, 2)), [][]int{{0, 1}, {0, 2}, {1, 2}})
-// 		t.Errorf("Combinations(4, 2) has error\n")
-// 	}
-// }
+func TestPermutations(t *testing.T) {
+	if len(ToSliceOfSlice(Permutations(5))) != Factorial(5) {
+		t.Errorf("permutations has error %d %d\n", Factorial(5), len(ToSliceOfSlice(Permutations(5))))
+	}
+}

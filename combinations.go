@@ -1,6 +1,6 @@
 package comb
 
-const ChannelBufferSize = 8
+const channelBufferSize = 8
 
 // Binomial is the number of k combinations over n elements.
 func Binomial(n, k int) int {
@@ -10,23 +10,17 @@ func Binomial(n, k int) int {
 	return n * Binomial(n-1, k-1) / k
 }
 
-func duplicateSlice(s []int) (sCopy []int) {
-	sCopy = make([]int, len(s))
-	copy(sCopy, s)
-	return
-}
-
 // Combinations produces iter of all the k combinations over the integers
 // 0 up to n. Based on Python's combinations in
 // https://docs.python.org/3/library/itertools.html
 func Combinations(n, k int) (iter chan []int) {
-	iter = make(chan []int, ChannelBufferSize)
+	iter = make(chan []int, channelBufferSize)
 	go func() {
 		result := make([]int, k)
 		for i := 0; i < k; i++ {
 			result[i] = i
 		}
-		iter <- duplicateSlice(result)
+		iter <- CopySlice(result)
 		for {
 			var i int
 			var f bool
@@ -40,11 +34,11 @@ func Combinations(n, k int) (iter chan []int) {
 				close(iter)
 				return
 			}
-			result[i] += 1
+			result[i]++
 			for j := i + 1; j < k; j++ {
 				result[j] = result[j-1] + 1
 			}
-			iter <- duplicateSlice(result)
+			iter <- CopySlice(result)
 		}
 	}()
 	return
