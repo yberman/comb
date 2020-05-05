@@ -1,5 +1,11 @@
 package comb
 
+const channelBufferSize = 8
+
+func newIntChan() chan []int {
+	return make(chan []int, channelBufferSize)
+}
+
 // ToSliceOfSlice takes a channel of slices and makes it a slice of slices
 func ToSliceOfSlice(ch chan []int) [][]int {
 	r := make([][]int, 0)

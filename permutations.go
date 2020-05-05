@@ -12,7 +12,7 @@ func Factorial(n int) (r int) {
 // Permutations returns an iter of all permutations
 // of the numbers 0 through n-1. It is implemented recursively
 func Permutations(n int) (iter chan []int) {
-	iter = make(chan []int, channelBufferSize)
+	iter = newIntChan()
 	go func() {
 		if n == 0 {
 			iter <- []int{}

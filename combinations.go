@@ -1,7 +1,5 @@
 package comb
 
-const channelBufferSize = 8
-
 // Binomial is the number of k combinations over n elements.
 func Binomial(n, k int) int {
 	if k == 0 {
@@ -14,7 +12,7 @@ func Binomial(n, k int) int {
 // 0 up to n. Based on Python's combinations in
 // https://docs.python.org/3/library/itertools.html
 func Combinations(n, k int) (iter chan []int) {
-	iter = make(chan []int, channelBufferSize)
+	iter = newIntChan()
 	go func() {
 		result := make([]int, k)
 		for i := 0; i < k; i++ {
