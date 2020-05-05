@@ -4,11 +4,9 @@ import (
 	"testing"
 )
 
-
-
 func TestFactorial(t *testing.T) {
 	b := Factorial(10)
-	const target = 1
+	const target = 3628800
 	if b != target {
 		t.Errorf("Factorial(10) = %d != %d\n", b, target)
 	}

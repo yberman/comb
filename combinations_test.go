@@ -2,7 +2,6 @@ package comb
 
 import (
 	"testing"
-	"fmt"
 )
 
 func makeSliceOfSlice(ch chan []int) [][]int {
@@ -77,7 +76,6 @@ func TestBinomial(t *testing.T) {
 }
 
 func TestCominations(t *testing.T) {
-	fmt.Printf("%v\n%v\n", makeSliceOfSlice(Combinations(4, 2)), [][]int{{0, 1}, {0, 2}, {0, 3}, {1, 2}, {1, 3}, {1, 4}})
 	if equalSliceOfSlice(makeSliceOfSlice(Combinations(4, 2)), [][]int{{0, 1}, {0, 2}, {0, 3}, {1, 2}, {1, 3}, {1, 4}}) {
 		t.Errorf("Combinations(4, 2) has error\n")
 	}
