@@ -4,7 +4,7 @@ package comb
 type Compose int
 
 // Positive are positive compositions of an integer
-func (cm Compose) Positive(k int) (iter Iter) {
+func (cm Compose) Positive(k int) (iter chan []int) {
 	iter = newIntChan()
 	go func() {
 		for c := range Combinations(int(cm-1), k-1) {
@@ -22,19 +22,15 @@ func (cm Compose) Positive(k int) (iter Iter) {
 	return
 }
 
-var a = `    for comp in positive(n+k, k):
-        yield tuple(x-1 for x in comp)
-
-`
-
 // NonNegative non-negative compositions
-func (cm Compose) NonNegative(k int) (iter Iter) {
+func (cm Compose) NonNegative(k int) (iter chan []int) {
 	iter = newIntChan()
 	go func() {
-		for pos := range Compose(int(cm) + k).Positive(k) {
-			for i := 0; i < len(pos); i++ {
-				pos[i]--
+		for c := range Compose(int(cm) + k).Positive(k) {
+			for i := 0; i < len(c); i++ {
+				c[i]--
 			}
+			iter <- c
 		}
 		close(iter)
 	}()
